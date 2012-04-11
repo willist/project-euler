@@ -1,29 +1,22 @@
 import math
-import numpy
 
 def factors(num):
     sqrt_num = int(math.sqrt(num))
 
-    poss_left_factors = numpy.arange(1, sqrt_num + 1)
+    possible_left_factors = xrange(1, sqrt_num + 1)
 
-    facts = set()
-    for poss_factor in poss_left_factors:
-        if not num % poss_factor:
-            facts.add(poss_factor)
-            facts.add(num / poss_factor)
-
-    return sorted(list(facts))
+    for possible_factor in possible_left_factors:
+        if not num % possible_factor:
+            yield possible_factor
+            if possible_factor != (num / possible_factor):
+                yield num / possible_factor
 
 def prime_factors(num):
-    facts = []
     if num >= 1:
-        facts.append(1)
+        yield 1
     for item in factors(num):
-        all_factors = factors(item)
-        if len(all_factors) == 2:
-            facts.append(item)
-
-    return facts
+        if is_prime(item):
+            yield item
 
 def fibonacci(cap=None):
     a = 0
@@ -34,6 +27,13 @@ def fibonacci(cap=None):
        a, b = b, a + b
        if b > cap:
            break
+
+def is_prime(num):
+    index = -1
+    for index, item in enumerate(factors(num)):
+        if index == 2:
+            break
+    return index == 1
  
 def is_palindrome(number):
     return str(number) == str(number)[::-1]
