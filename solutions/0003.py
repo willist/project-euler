@@ -10,17 +10,19 @@ def factors(num):
 
     facts = []
     for poss_factor in poss_left_factors:
-        if not a % poss_factor:
+        if not num % poss_factor:
             facts.append(poss_factor)
-            facts.append(a / poss_factor)
+            facts.append(num / poss_factor)
 
     return sorted(facts)
 
 def prime_factors(num):
     facts = []
-    for factor in factors(num):
-        if len(factors(factor)) == 2:
-            facts.append(factor)
+    for item in factors(num):
+        all_factors = factors(item)
+        print item, all_factors
+        if len(all_factors) == 2:
+            facts.append(item)
 
     return facts
 
