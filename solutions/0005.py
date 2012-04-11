@@ -6,9 +6,7 @@ def divisible_by_range(lower=1, upper=10):
             break
         num += 1
     
-    print '=' * 79
     print num
-    raw_input()
 
 divisible_by_range(1,10)
 divisible_by_range(11,20)
