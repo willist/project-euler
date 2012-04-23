@@ -1,2 +1,4 @@
 *.pyc
 *~
+dotnet-solutions/bin
+dotnet-solutions/obj

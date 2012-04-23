@@ -42,6 +42,12 @@ def fibonacci(cap=None):
        if b > cap:
            break
 
+def triangle_numbers():
+    value = 0
+    for num in itertools.count(1):
+        value += num
+        yield value
+
 def parse_grid(grid):
     """Parse a grid into a two dimensional list.
     """
