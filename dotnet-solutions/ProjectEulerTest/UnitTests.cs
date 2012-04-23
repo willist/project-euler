@@ -55,4 +55,17 @@ namespace ProjectEulerTest
             Assert.IsFalse(Utilities.Is_Palindrome(100));
         }
     }
+
+    [TestClass]
+    public class ExtensionMethodUnitTests
+    {
+        [TestMethod]
+        public void TestFactors()
+        { 
+            var number = 10;
+            var expected = new List<int> { 1, 2, 5, 10 }.AsEnumerable();
+            var observed = number.Factors();
+            Assert.IsTrue(expected.SequenceEqual(observed));
+        }
+    }
 }

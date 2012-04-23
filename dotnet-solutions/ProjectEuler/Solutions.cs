@@ -46,7 +46,8 @@ namespace ProjectEuler
         /// <returns></returns>
         public int Problem003()
         {
-            return 0;
+            var number = 0;
+            return number;
         }
 
         /// <summary>
