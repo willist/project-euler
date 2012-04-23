@@ -8,7 +8,7 @@ using ProjectEuler;
 namespace ProjectEulerTest
 {
     [TestClass]
-    public class UnitTests
+    public class SolutionsUnitTests
     {
         private ProjectEuler.Solutions solution;
 
@@ -41,6 +41,18 @@ namespace ProjectEulerTest
         public void TestProblem004()
         {
             Assert.AreEqual<int>(906609, solution.Problem004());
+        }
+    }
+
+    [TestClass]
+    public class UtilitiesUnitTests
+    {
+
+        [TestMethod]
+        public void TestIs_Palindrome()
+        {
+            Assert.IsTrue(Utilities.Is_Palindrome(101));
+            Assert.IsFalse(Utilities.Is_Palindrome(100));
         }
     }
 }

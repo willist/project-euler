@@ -5,6 +5,20 @@ using System.Text;
 
 namespace ProjectEuler
 {
+    public static class ExtensionMethods
+    {
+        public static IEnumerable<Tuple<int, int>> CartesianProduct(this IEnumerable<int> iter)
+        {
+            var range = iter.ToList();
+            foreach (var item1 in range)
+            {
+                foreach (var item2 in range)
+                {
+                    yield return Tuple.Create<int, int>(item1, item2);
+                }
+            }
+        }
+    }
     public class Utilities
     {
         static public IEnumerable<int> Fibonacci()
@@ -28,7 +42,8 @@ namespace ProjectEuler
         static public bool Is_Palindrome(int value)
         {
             string s_value = Convert.ToString(value);
-            return s_value.Equals(s_value.Reverse());
+            string s_value_reversed = new string (s_value.Reverse().ToArray());
+            return s_value.Equals(s_value_reversed);
         }
     }
 
@@ -84,9 +99,13 @@ namespace ProjectEuler
         /// <returns></returns>
         public int Problem004()
         {
-            Func<int, int, int> product = (x, y) => x * y;
-            var products = Enumerable.Zip(Enumerable.Range(0, 1000).Reverse(), Enumerable.Range(0, 1000).Reverse(), product);
-            return products.Where(Utilities.Is_Palindrome).First();
+            Func<Tuple<int, int>, int> product = input => input.Item1 * input.Item2;
+            
+            return Enumerable.Range(0, 1000)
+                .CartesianProduct()
+                .Select(product)
+                .Where(Utilities.Is_Palindrome)
+                .Max();
         }
     }
 }
