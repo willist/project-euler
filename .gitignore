@@ -1,4 +1,6 @@
 *.pyc
 *~
-dotnet-solutions/bin
-dotnet-solutions/obj
+bin/
+obj/
+TestResults/
+*.suo

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace ProjectEuler
-{   
+{
     /// <summary>
     /// Solutions to various Project Euler problems.
     /// </summary>
@@ -20,15 +20,10 @@ namespace ProjectEuler
         {
             return Enumerable.Range(0, 1000).Where(x => (x % 3 == 0 || x % 5 == 0)).Sum();
         }
-    }
 
-    class Program
-    {
-        static void Main(string[] args)
+        public int Problem002()
         {
-            var solutions = new Solutions();
-            Console.WriteLine(String.Format("Answer to Problem 1 = {0}", solutions.Problem001()));
-            Console.ReadKey();
+            return 0;
         }
     }
 }
