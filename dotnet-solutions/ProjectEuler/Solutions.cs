@@ -44,10 +44,10 @@ namespace ProjectEuler
         ///What is the largest prime factor of the number 600851475143 ?
         /// </summary>
         /// <returns></returns>
-        public int Problem003()
+        public long Problem003()
         {
-            var number = 0;
-            return number;
+            var number = 600851475143;
+            return number.PrimeFactors().Max();
         }
 
         /// <summary>

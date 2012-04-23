@@ -34,7 +34,7 @@ namespace ProjectEulerTest
         [TestMethod]
         public void TestProblem003()
         {
-            Assert.AreEqual<int>(6857, solution.Problem003());
+            Assert.AreEqual<long>(6857, solution.Problem003());
         }
 
         [TestMethod]
@@ -54,6 +54,14 @@ namespace ProjectEulerTest
             Assert.IsTrue(Utilities.Is_Palindrome(101));
             Assert.IsFalse(Utilities.Is_Palindrome(100));
         }
+
+        [TestMethod]
+        public void TestPrimes()
+        {
+            var expected = new List<int> { 2, 3, 5, 7, 11 }.AsEnumerable();
+            var observed = Utilities.Primes().Take(5);
+            Assert.IsTrue(expected.SequenceEqual(observed));
+        }
     }
 
     [TestClass]
@@ -65,6 +73,16 @@ namespace ProjectEulerTest
             var number = 10;
             var expected = new List<int> { 1, 2, 5, 10 }.AsEnumerable();
             var observed = number.Factors();
+            Assert.IsTrue(expected.SequenceEqual(observed));
+
+            number = 25;
+            expected = new List<int> { 1, 5, 25 }.AsEnumerable();
+            observed = number.Factors();
+            Assert.IsTrue(expected.SequenceEqual(observed));
+
+            number = 2;
+            expected = new List<int> { 1, 2 }.AsEnumerable();
+            observed = number.Factors();
             Assert.IsTrue(expected.SequenceEqual(observed));
         }
     }

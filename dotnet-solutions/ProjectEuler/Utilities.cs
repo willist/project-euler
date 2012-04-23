@@ -31,7 +31,12 @@ namespace ProjectEuler
             string s_value_reversed = new string(s_value.Reverse().ToArray());
             return s_value.Equals(s_value_reversed);
         }
-
+        
+        public static IEnumerable<int> Primes()
+        {
+            var ints = Enumerable.Range(2, Int32.MaxValue - 1);
+            return ints.Where(x => x.Factors().Take(2).Max() == x);
+        }
 
         public static IEnumerable<Tuple<int, int>> CartesianProduct(IEnumerable<int> iter1, IEnumerable<int> iter2)
         {
