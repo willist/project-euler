@@ -24,6 +24,12 @@ namespace ProjectEuler
                 second = new_value;
             }
         }
+
+        static public bool Is_Palindrome(int value)
+        {
+            string s_value = Convert.ToString(value);
+            return s_value.Equals(s_value.Reverse());
+        }
     }
 
     /// <summary>
@@ -78,7 +84,9 @@ namespace ProjectEuler
         /// <returns></returns>
         public int Problem004()
         {
-            return 0;
+            Func<int, int, int> product = (x, y) => x * y;
+            var products = Enumerable.Zip(Enumerable.Range(0, 1000).Reverse(), Enumerable.Range(0, 1000).Reverse(), product);
+            return products.Where(Utilities.Is_Palindrome).First();
         }
     }
 }
