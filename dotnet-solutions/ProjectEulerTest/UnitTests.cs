@@ -60,6 +60,13 @@ namespace ProjectEulerTest
         {
             Assert.AreEqual<int>(104743, solution.Problem007());
         }
+
+        [TestMethod]
+        public void TestProblem008()
+        {
+            Assert.AreEqual<int>(40824, solution.Problem008());
+        }
+
     }
 
     [TestClass]
@@ -119,6 +126,15 @@ namespace ProjectEulerTest
             expected = new List<int> { 1, 2 }.AsEnumerable();
             observed = number.Factors();
             Assert.IsTrue(expected.SequenceEqual(observed));
+        }
+
+        [TestMethod]
+        public void TestProduct()
+        {
+            var list = new List<int> { 1, 2, 3, 4 }.AsEnumerable();
+            var expected = 1 * 2 * 3 * 4;
+            var observed = list.Product();
+            Assert.AreEqual(expected, observed);
         }
     }
 }

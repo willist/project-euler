@@ -41,5 +41,28 @@ namespace ProjectEuler
                 }
             }
         }
+
+        public static IEnumerable<List<T>> Chunkify<T>(this IEnumerable<T> seq, int chunkSize)
+        {
+            Queue<T> chunk = new Queue<T>(seq.Take(chunkSize));
+            yield return chunk.ToList<T>();
+
+            foreach (var item in seq.Skip(chunkSize))
+            {
+                chunk.Dequeue();
+                chunk.Enqueue(item);
+                yield return chunk.ToList();
+            }
+        }
+
+        public static int Product(this IEnumerable<int> seq)
+        {
+            var result = 1;
+            foreach (var item in seq)
+            {
+                result *= item;
+            }
+            return result;
+        }
     }
 }
