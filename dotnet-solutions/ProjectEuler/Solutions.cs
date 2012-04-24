@@ -65,5 +65,50 @@ namespace ProjectEuler
                 .Where(Utilities.Is_Palindrome)
                 .Max();
         }
+
+        /// <summary>
+        /// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+
+        /// What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+        /// </summary>
+        /// <returns></returns>
+        public int Problem005()
+        {
+            return Utilities.NumberGenerator(1)
+                .Where(x => 
+                    Enumerable.Range(1, 20).All(y => x % y == 0))
+                .First();
+        }
+        
+        /// <summary>
+        /// The sum of the squares of the first ten natural numbers is,
+        /// 1^2 + 2^2 + ... + 10^2 = 385
+        /// 
+        /// The square of the sum of the first ten natural numbers is,
+        /// (1 + 2 + ... + 10)^2 = 55^2 = 3025
+        /// 
+        /// Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025  385 = 2640.
+        ///
+        /// Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+        /// </summary>
+        /// <returns></returns>
+        public int Problem006()
+        {
+            var input = 100;
+            var sumOfSquares = Enumerable.Range(1, input).Select(x => x * x).Sum();
+            var squareOfSum = Convert.ToInt32(Math.Pow(Enumerable.Range(1, input).Sum(), 2));
+            return Math.Abs(squareOfSum - sumOfSquares);
+        }
+
+        /// <summary>
+        /// By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+        ///
+        /// What is the 10,001st prime number?
+        /// </summary>
+        /// <returns></returns>
+        public int Problem007()
+        {
+            return Utilities.Primes().Skip(10000).First();
+        }
     }
 }

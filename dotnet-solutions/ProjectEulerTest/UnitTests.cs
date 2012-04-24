@@ -42,6 +42,24 @@ namespace ProjectEulerTest
         {
             Assert.AreEqual<int>(906609, solution.Problem004());
         }
+
+        [TestMethod]
+        public void TestProblem005()
+        {
+            Assert.AreEqual<int>(232792560, solution.Problem005());
+        }
+
+        [TestMethod]
+        public void TestProblem006()
+        {
+            Assert.AreEqual<int>(25164150, solution.Problem006());
+        }
+
+        [TestMethod]
+        public void TestProblem007()
+        {
+            Assert.AreEqual<int>(104743, solution.Problem007());
+        }
     }
 
     [TestClass]
@@ -61,6 +79,23 @@ namespace ProjectEulerTest
             var expected = new List<int> { 2, 3, 5, 7, 11 }.AsEnumerable();
             var observed = Utilities.Primes().Take(5);
             Assert.IsTrue(expected.SequenceEqual(observed));
+        }
+
+        [TestMethod]
+        public void TestNumberGenerator()
+        {
+            var expected = new List<int> { 0, 1, 2 }.AsEnumerable();
+            var observed = Utilities.NumberGenerator().Take(3);
+            Assert.IsTrue(expected.SequenceEqual(observed));
+
+            expected = new List<int> { 0, 2, 4 }.AsEnumerable();
+            observed = Utilities.NumberGenerator(step: 2).Take(3);
+            Assert.IsTrue(expected.SequenceEqual(observed));
+
+            expected = new List<int> { 1, 4, 7 }.AsEnumerable();
+            observed = Utilities.NumberGenerator(1, 3).Take(3);
+            Assert.IsTrue(expected.SequenceEqual(observed));
+
         }
     }
 

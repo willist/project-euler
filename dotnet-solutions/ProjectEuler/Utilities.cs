@@ -48,5 +48,14 @@ namespace ProjectEuler
                 }
             }
         }
+
+        public static IEnumerable<int> NumberGenerator(int start = 0, int step = 1)
+        { 
+            while (true)
+            {
+                yield return start;
+                start += step;
+            }
+        }
     }
 }
