@@ -49,6 +49,20 @@ namespace ProjectEuler
             }
         }
 
+        public static IEnumerable<Tuple<int, int, int>> CartesianProduct(IEnumerable<int> iter1, IEnumerable<int> iter2, IEnumerable<int> iter3)
+        {
+            foreach (var item1 in iter1)
+            {
+                foreach (var item2 in iter2)
+                {
+                    foreach (var item3 in iter3)
+                    {
+                        yield return Tuple.Create<int, int, int>(item1, item2, item3);
+                    }
+                }
+            }
+        }
+        
         public static IEnumerable<int> NumberGenerator(int start = 0, int step = 1)
         { 
             while (true)

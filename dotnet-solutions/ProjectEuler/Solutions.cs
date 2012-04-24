@@ -144,5 +144,30 @@ namespace ProjectEuler
                     chunk.Select(piece => Convert.ToInt32(piece.ToString())).Product())
                 .Max();
         }
+
+        /// <summary>
+        /// A Pythagorean triplet is a set of three natural numbers, a  b  c, for which,
+        ///
+        /// a2 + b2 = c2
+        /// For example, 32 + 42 = 9 + 16 = 25 = 52.
+        ///
+        /// There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+        /// Find the product abc.
+        /// </summary>
+        /// <returns></returns>
+        public int Problem009()
+        {
+            Func<Tuple<int, int, int>, bool> isPythagorean = delegate(Tuple<int, int, int> x)
+            {
+                return (Math.Pow(x.Item1, 2) + Math.Pow(x.Item2, 2) == Math.Pow(x.Item3, 2));
+            };
+
+            return Utilities.CartesianProduct(Enumerable.Range(1, 1000), Enumerable.Range(1, 1000), Enumerable.Range(1, 1000))
+                .Where(x => (x.Item1 + x.Item2 + x.Item3) == 1000)
+                .Where(isPythagorean)
+                .Select(x => new List<int> { x.Item1, x.Item2, x.Item3 }.AsEnumerable().Product())
+                .First();
+
+        }
     }
 }
