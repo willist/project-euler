@@ -121,4 +121,12 @@ def is_prime(num):
 def is_palindrome(number):
     return str(number) == str(number)[::-1]
 
-
+def collatz(number):
+    yield number
+    while number != 1:
+        if number % 2 == 1:
+            number = 3 * number + 1
+        else:
+            number /= 2
+        yield number
+        
