@@ -25,6 +25,16 @@ namespace ProjectEuler
             }
         }
 
+        public static IEnumerable<int> TriangleNumbers()
+        {
+            var current = 0;
+            foreach (var item in Utilities.NumberGenerator(1))
+            {
+                current += item;
+                yield return current;
+            }
+        }
+
         public static bool Is_Palindrome(int value)
         {
             string s_value = Convert.ToString(value);

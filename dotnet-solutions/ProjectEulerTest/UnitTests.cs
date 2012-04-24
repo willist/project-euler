@@ -79,6 +79,12 @@ namespace ProjectEulerTest
             Assert.AreEqual<long>(142913828922, solution.Problem010());
         }
 
+        [TestMethod]
+        public void TestProblem012()
+        {
+            Assert.AreEqual(76576500, solution.Problem012());
+        }
+
     }
 
     [TestClass]
