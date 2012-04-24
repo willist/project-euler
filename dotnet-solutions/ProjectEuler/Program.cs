@@ -11,7 +11,7 @@ namespace ProjectEuler
         static void Main(string[] args)
         {
             var solutions = new Solutions();
-            Console.WriteLine(String.Format("Answer to Problem 9 = {0}", solutions.Problem009()));
+            Console.WriteLine(String.Format("Answer to Problem 10 = {0}", solutions.Problem010()));
             Console.ReadKey();
         }
     }
