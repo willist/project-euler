@@ -129,4 +129,22 @@ def collatz(number):
         else:
             number /= 2
         yield number
-        
+
+def pascals_triangle():
+    def next_triangle_piece(step):
+        #import pdb; pdb.set_trace()
+        new_step = []
+        previous = None
+        for current in step:
+            if previous is not None:
+                new_step.append(previous + current)
+            previous = current
+        return [1] + new_step + [1]
+
+    current_step = [1]
+    while True:
+        yield current_step
+        current_step = next_triangle_piece(current_step)
+
+def nth(iterable, n, default=None):
+    return next(itertools.islice(iterable, n, None), default)
