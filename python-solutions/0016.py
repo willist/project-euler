@@ -1,6 +1,3 @@
-def big_number_iterator(number):
-    while number:
-        yield number % 10
-        number = int(number / 10)
+from utilities import big_number_iterator
 
 print sum(big_number_iterator(pow(2, 1000)))
