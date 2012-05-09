@@ -36,9 +36,19 @@ def parse_triangle(s):
 
     return head
 
-def greedy(head):
-    if head.left is None:
-        return head.value
+def calculate_weights(head):
+    if head is None:
+        return 0
 
-    best_child = max(greedy(head.left), greedy(head.right))
-    return head.value + best_child
+    if hasattr(head.left, 'weight'):
+        left_weight = head.left.weight
+    else:
+        left_weight = calculate_weights(head.left)
+
+    if hasattr(head.right, 'weight'):
+        right_weight = head.right.weight
+    else:
+        right_weight = calculate_weights(head.right)
+
+    head.weight = head.value + max(left_weight, right_weight)
+    return head.weight

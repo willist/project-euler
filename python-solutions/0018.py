@@ -15,6 +15,7 @@
 63 66 04 68 89 53 67 30 73 16 69 87 40 31
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23     
 """
-from triangle_utilities import greedy, parse_triangle
+from triangle_utilities import parse_triangle, calculate_weights
 
-print greedy(parse_triangle(__doc__))
+print calculate_weights(parse_triangle(__doc__))
+#print greedy(parse_triangle(__doc__))
