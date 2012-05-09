@@ -150,8 +150,9 @@ def nth(iterable, n, default=None):
     return next(itertools.islice(iterable, n, None), default)
 
 def big_number_iterator(number):
+    if number == 0:
+        yield number
     while number:
         yield number % 10
         number = int(number / 10)
-
 
