@@ -3,12 +3,20 @@
    12  14
  16  18  20
 """
+from functools import total_ordering
 
+@total_ordering
 class Node(object):
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
+
+    def __eq__(self, other):
+        return self.value == other.value
+
+    def __lt__(self, other):
+        return self.value < self.value
 
     def __repr__(self):
         lvalue = self.left.value if self.left is not None else 'None'
@@ -33,4 +41,11 @@ def parse_triangle():
 
     return head
 
-print parse_triangle()
+def greedy(head):
+    big_kid = max(head.left, head.right)
+    if big_kid is None:
+        return head.value
+
+    return head.value + greedy(big_kid)
+
+print greedy(parse_triangle())
