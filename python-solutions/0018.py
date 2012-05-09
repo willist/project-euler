@@ -54,11 +54,10 @@ def parse_triangle():
     return head
 
 def greedy(head):
-    print head
-    big_kid = max(head.left, head.right)
-    if big_kid is None:
+    if head.left is None:
         return head.value
 
-    return head.value + greedy(big_kid)
+    best_child = max(greedy(head.left), greedy(head.right))
+    return head.value + best_child
 
 print greedy(parse_triangle())
