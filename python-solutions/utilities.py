@@ -37,15 +37,13 @@ def nth_prime(n):
             print item
             break
 
-def fibonacci(cap=None):
+def fibonacci():
     a = 0
     yield a
     b = 1
     while True:
        yield b
        a, b = b, a + b
-       if b > cap:
-           break
 
 def triangle_numbers():
     value = 0
