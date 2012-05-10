@@ -1,6 +1,7 @@
 import math
 import itertools
 import string
+from decorators import memoized 
 
 def factors(num):
     sqrt_num = int(math.sqrt(num))
@@ -12,6 +13,9 @@ def factors(num):
             yield possible_factor
             if possible_factor != (num / possible_factor):
                 yield num / possible_factor
+
+def proper_divisors(num):
+    return (x for x in factors(num) if x != num)
 
 def prime_factors(num):
     if num >= 1:
@@ -229,3 +233,20 @@ def count_letters(s):
         if item in string.ascii_lowercase:
             count += 1
     return count
+
+def is_amicable(num):
+    a = sum(proper_divisors(num))
+    b = sum(proper_divisors(a))
+    return a != num and num == b
+
+def is_perfect(num):
+    return sum(proper_divisors(num)) == num
+
+def is_deficient(num):
+    return sum(proper_divisors(num)) < num
+
+def is_abundant(num):
+    return sum(proper_divisors(num)) > num
+
+
+
