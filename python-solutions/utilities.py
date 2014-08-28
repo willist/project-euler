@@ -1,7 +1,8 @@
 import math
 import itertools
 import string
-from decorators import memoized 
+from decorators import memoized
+
 
 def factors(num):
     sqrt_num = int(math.sqrt(num))
@@ -14,8 +15,10 @@ def factors(num):
             if possible_factor != (num / possible_factor):
                 yield num / possible_factor
 
+
 def proper_divisors(num):
     return (x for x in factors(num) if x != num)
+
 
 def prime_factors(num):
     if num >= 1:
@@ -24,10 +27,12 @@ def prime_factors(num):
         if is_prime(item):
             yield item
 
+
 def prime_generator():
     for num in itertools.count():
         if is_prime(num):
             yield num
+
 
 def nth_prime(n):
     if n <= 0:
@@ -37,13 +42,15 @@ def nth_prime(n):
             print item
             break
 
+
 def fibonacci():
     a = 0
     yield a
     b = 1
     while True:
-       yield b
-       a, b = b, a + b
+        yield b
+        a, b = b, a + b
+
 
 def triangle_numbers():
     value = 0
@@ -51,17 +58,20 @@ def triangle_numbers():
         value += num
         yield value
 
+
 def parse_grid(grid):
     """Parse a grid into a two dimensional list.
     """
     return [[int(item) for item in row.split(' ') if item != '']
             for row in grid.split('\n') if row.strip()]
 
+
 def grid_vertical(grid):
     y_len = len(grid)
     x_len = len(grid[0])
 
     return [[grid[x][y] for x in range(x_len)] for y in range(y_len)]
+
 
 def grid_diagonal_left(grid):
     rotated_grid = []
@@ -77,6 +87,7 @@ def grid_diagonal_left(grid):
         diagonals.append(row[pivot:])
     return filter(None, diagonals)
 
+
 def grid_diagonal_right(grid):
     rotated_grid = []
     for pivot, row in enumerate(grid):
@@ -91,8 +102,10 @@ def grid_diagonal_right(grid):
         diagonals.append(row[pivot:])
     return filter(None, diagonals)
 
+
 def product(*items):
-    return reduce(lambda a,b: a*b, items)
+    return reduce(lambda a, b: a * b, items)
+
 
 def chunker(iterable, chunk_size):
     """Returns overlapping chunks of an iterable, sliding the window by 1
@@ -108,11 +121,13 @@ def chunker(iterable, chunk_size):
         chunk = chunk[1:] + [item]
         yield chunk
 
+
 def max_product(grid, adjacent_size):
     chunked_rows = (chunker(row, adjacent_size) for row in grid)
     chunked_products = (product(*chunk)
         for row in chunked_rows for chunk in row)
     return max(chunked_products)
+
 
 def is_prime(num):
     index = -1
@@ -120,9 +135,11 @@ def is_prime(num):
         if index == 2:
             break
     return index == 1
- 
+
+
 def is_palindrome(number):
     return str(number) == str(number)[::-1]
+
 
 def collatz(number):
     yield number
@@ -133,9 +150,9 @@ def collatz(number):
             number /= 2
         yield number
 
+
 def pascals_triangle():
     def next_triangle_piece(step):
-        #import pdb; pdb.set_trace()
         new_step = []
         previous = None
         for current in step:
@@ -149,8 +166,10 @@ def pascals_triangle():
         yield current_step
         current_step = next_triangle_piece(current_step)
 
+
 def nth(iterable, n, default=None):
     return next(itertools.islice(iterable, n, None), default)
+
 
 def big_number_iterator(number):
     if number == 0:
@@ -158,6 +177,7 @@ def big_number_iterator(number):
     while number:
         yield number % 10
         number = int(number / 10)
+
 
 def num_to_words(num):
     mapping = {
@@ -202,20 +222,23 @@ def num_to_words(num):
 
     thousand = num / 1000
     if thousand:
-        if s: s += " "
+        if s:
+            s += " "
         s += "%s thousand" % num_to_words(thousand)
     num = num % 1000
 
     hundred = num / 100
     if hundred:
-        if s: s += " "
+        if s:
+            s += " "
         s += "%s hundred" % num_to_words(hundred)
     num = num % 100
 
     ones = num % 10
     tens = num - ones
     if num:
-        if s: s += " and "
+        if s:
+            s += " and "
         if 0 <= num <= 20:
             s += "%s" % num_to_words(num)
         else:
@@ -225,6 +248,7 @@ def num_to_words(num):
 
     return s
 
+
 def count_letters(s):
     count = 0
     for item in str(s):
@@ -232,19 +256,20 @@ def count_letters(s):
             count += 1
     return count
 
+
 def is_amicable(num):
     a = sum(proper_divisors(num))
     b = sum(proper_divisors(a))
     return a != num and num == b
 
+
 def is_perfect(num):
     return sum(proper_divisors(num)) == num
+
 
 def is_deficient(num):
     return sum(proper_divisors(num)) < num
 
+
 def is_abundant(num):
     return sum(proper_divisors(num)) > num
-
-
-

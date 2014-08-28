@@ -1,3 +1,12 @@
+from itertools import takewhile
+
 from utilities import fibonacci
 
-print sum(x for x in fibonacci(4000000) if not x % 2)
+
+def is_less_than(cutoff):
+    def inner(num):
+        return num < cutoff
+    return inner
+
+
+print sum(x for x in takewhile(is_less_than(4000000), fibonacci()) if not x % 2)
