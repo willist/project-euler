@@ -8,4 +8,11 @@ Description:
 from utilities import prime_factors
 
 num = 600851475143
-print max(prime_factors(num))
+
+
+def solution():
+    return max(prime_factors(num))
+
+
+if __name__ == "__main__":
+    print solution()

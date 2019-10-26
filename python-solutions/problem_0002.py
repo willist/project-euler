@@ -20,4 +20,9 @@ def is_less_than(cutoff):
     return inner
 
 
-print sum(x for x in takewhile(is_less_than(4000000), fibonacci()) if not x % 2)
+def solution():
+    return sum(x for x in takewhile(is_less_than(4000000), fibonacci()) if not x % 2)
+
+
+if __name__ == "__main__":
+    print solution()
